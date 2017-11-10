@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+/**This programs prints the number of occurrences of a repeated number in an integer array**/
+
+public class OccuranceCounter {
+
+	public static void main(String[] args) {
+		int a[]= new int[10];
+		int count= 1;
+		System.out.println("Enter the numbers : ");
+		Scanner sc = new Scanner(System.in);
+		for(int i = 0; i<10;i++)
+		{
+			a[i]=sc.nextInt();
+		}
+		Arrays.sort(a);
+		System.out.println("Occurance of each number is : \n");
+		for(int i=0;i<a.length;i++)
+		{
+			if(i+1<a.length)
+			{
+				if(a[i]==a[i+1])
+					count++;
+				else
+				{
+					System.out.println(a[i] + " " +count);
+					count=1;
+					i=i;
+				}
+
+			}
+			else
+				System.out.println(a[i]+" "+count);
+
+		}
+
+	}
+
+}
+
