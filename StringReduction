@@ -1,0 +1,71 @@
+/*Write a program that takes a string as input which contains a number. Keep adding those numbers untill you obtain a single digit.
+
+Input : A String which contains a number
+A Threshhold number
+
+Output : The single digit obtained after adding all the numbers
+
+Rules : 1.Add the numbers until it is greater than threshhold. 
+Once the sum is greater than threshhold that becomes the new threshhold for next numbers.
+If there are no more numbers to be added then start the process again by using default threshhold.
+
+Example : 
+Input : 123456789
+10
+
+Output : 9
+
+Explaination :
+Iteration 1 : "15219" - Here we obtained 15 by adding 1+2+3+4+5 = 15 which is greater than the threshhold 10 so the new threshhold is 15.
+
+now we get 21 by adding 6+7+8 = 21 which is greater than the current threshhold 15. Therefore new Threshhold is 21.
+
+now we have 9 and as we have no more nnumbers to be added although the number is less than current threshhold we append it.
+Thereby we get 15219
+
+Iteration 2 : "18" which we get by adding 1+5+2+1+9 = 18 which is greater than the default threshhold 10. 
+And we have no more numbers to be added.
+
+Iteration 3 : "9" which we get from adding 1+8. which is the number that we need.
+
+*/
+
+CODE 
+====
+package Practice;
+
+import java.util.Scanner;
+
+public class StringReduction {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter the number : ");
+		String n = in.next();
+		
+		System.out.println("Enter the threshhold : ");
+		int t = in.nextInt();
+				
+		int num = 0;
+		String temp = n;
+		int sum = 0;
+		while(temp.length()!=1){
+		for(int i=0;i<temp.length();i++){
+			int c = temp.charAt(i);
+			while(sum<=t){
+				sum=sum+c;
+			}
+			if(sum>t){
+			t=sum;
+			temp.concat(String.valueOf(sum));
+			sum=0;
+			}
+			else if(i == n.length()-1){
+				temp.concat(String.valueOf(sum));
+			}
+		}
+		}
+		System.out.println(temp);
+		
+	}
+}
